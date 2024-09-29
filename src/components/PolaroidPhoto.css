@@ -1,0 +1,98 @@
+.polaroid-photo {
+  aspect-ratio: 350/450;
+  max-width: 350px;
+  --card-width: clamp(13.125rem, 17.81vw + 8.94rem, 17.5rem);
+  width: var(--card-width);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 88% 1fr;
+  padding: 20px;
+  background-color: white;
+  box-shadow: var(--shadow-size) var(--shadow-size) 2px var(--photo-shadow);
+  position: relative;
+  user-select: none;
+  /* border-radius: 10px; */
+  border: solid 1px var(--photo-border);
+}
+
+.polaroid-photo::before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-color: white;
+  filter: sepia(0.9);
+  mask-image: linear-gradient(
+    45deg,
+    black 0%,
+    transparent 30%,
+    black 70%,
+    black 100%
+  );
+}
+
+.photo-holder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-holder::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0px 4px 10px rgba(40, 40, 40, 0.6);
+}
+
+.photo-holder::before {
+  /* content: ""; */
+  display: block;
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(5px) brightness(0.7);
+  mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 10;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+  filter: brightness(0.8) grayscale(20%);
+  position: relative;
+}
+
+.photo-bottom {
+  background-color: white;
+  font-family: "Caveat", cursive;
+  --ratio-to-card-width: 0.228;
+  font-size: calc(var(--card-width) * var(--ratio-to-card-width));
+  text-align: left;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: visible;
+}
+
+.photo-text {
+  transform: rotate(-7deg) translateY(-10px);
+  display: block;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.85) 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  background-clip: text;
+  position: absolute;
+}

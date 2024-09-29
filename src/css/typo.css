@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "NothingYouCouldDo";
+  src: url("../assets/NothingYouCouldDo-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Caveat";
+  src: url("../assets/Caveat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400 700; /* Adjust based on the available weight range for Caveat */
+  font-style: normal; /* Change to 'italic' if needed */
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/GeistVF.ttf") format("truetype");
+  font-weight: 400 700; /* Adjust based on the available weight range for Caveat */
+  font-style: normal; /* Change to 'italic' if needed */
+}

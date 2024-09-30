@@ -47,20 +47,6 @@
   box-shadow: inset 0px 4px 10px rgba(40, 40, 40, 0.4);
 }
 
-.photo-holder::before {
-  /* content: ""; */
-  display: block;
-  position: absolute;
-  inset: 0;
-  backdrop-filter: brightness(0.7);
-  mask-image: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0) 70%,
-    rgba(0, 0, 0, 1) 100%
-  );
-  z-index: 10;
-}
-
 .photo {
   width: 100%;
   height: 100%;

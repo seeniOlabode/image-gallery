@@ -126,8 +126,6 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                       }}
                       animate={{
                         rotate: 0,
-                        opacity: currentImage?.index === i ? 0 : 1,
-                        y: currentImage?.index === i ? 10 : 0,
                       }}
                       layoutId={`${photo.text}-${stackId}-${i}`}
                       key={`${photo.text}-${stackId}-${i}-preview`}
@@ -136,6 +134,9 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                         type: "spring",
                         bounce: 0,
                         duration: PHOTO_STACK_ANIMATION_DURATION,
+                      }}
+                      style={{
+                        opacity: currentImage?.index === i ? 0 : 1,
                       }}
                       onClick={(e) => zoomImage(e, photo, i)}
                     />
@@ -173,8 +174,13 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
             photoUrl={currentImage.url}
             photoText={currentImage.text}
             photoData={currentImage}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
+            initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              transition: { duration: 0.3 },
+            }}
           />
         </div>
       )}

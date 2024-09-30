@@ -75,6 +75,7 @@ export const stacks = [
       "https://images.pexels.com/photos/1684304/pexels-photo-1684304.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/4350057/pexels-photo-4350057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/1790393/pexels-photo-1790393.jpeg?",
+      "https://images.pexels.com/photos/4536190/pexels-photo-4536190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     ],
   },
 
@@ -104,7 +105,6 @@ export const stacks = [
     photos: [
       "https://images.pexels.com/photos/20094712/pexels-photo-20094712/free-photo-of-woman-in-a-white-outfit-and-unbuttoned-shirt-standing-on-a-rocky-coat.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/28642591/pexels-photo-28642591/free-photo-of-casual-portrait-with-soft-light-and-shadow.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/4536190/pexels-photo-4536190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/4536190/pexels-photo-4536190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

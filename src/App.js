@@ -1,5 +1,6 @@
 import "./App.css";
 import PhotoStack from "./components/PhotoStack";
+import Slo from "./assets/slo.png";
 
 import { names, stacks } from "./data/stacks";
 
@@ -20,6 +21,10 @@ const mappedStacks = stacks.map((stack) => {
 function App() {
   return (
     <div className="app">
+      <a className="page-header" href="https://x.com/bodeslomo" target="_blank">
+        Polaroid Photos Stack to Grid Interaction by <img src={Slo} />
+        <span className="slo">Slo</span>
+      </a>
       {mappedStacks.map((stack, i) => {
         return (
           <PhotoStack

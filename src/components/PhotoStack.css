@@ -9,10 +9,6 @@
   animation-delay: var(--stack-delay);
 }
 
-.photo-stack.no-pointer {
-  pointer-events: none;
-}
-
 .photo-stack > .polaroid-photo {
   position: absolute;
 }

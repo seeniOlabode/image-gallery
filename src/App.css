@@ -15,10 +15,42 @@ body {
   place-items: center;
   place-content: center;
   padding: 20px;
+  padding-top: 100px;
   padding-bottom: 120px;
   overflow: hidden;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.page-header {
+  position: fixed;
+  bottom: 10px;
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  background-color: var(--foreground);
+  padding: 4px 15px;
+  border-radius: 999px;
+  color: hsla(210, 5%, 8%, 0.7);
+  font-size: 14px;
+  z-index: 100000;
+  text-decoration: none;
+  border: solid 1px var(--photo-border);
+}
+
+.page-header:hover .slo {
+  text-decoration: underline;
+}
+
+.page-header .slo {
+  font-weight: 500;
+  color: hsla(210, 5%, 8%, 1);
+}
+
+.page-header img {
+  width: 28px;
+  height: 28px;
 }
 
 @media screen and (min-width: 764px) {

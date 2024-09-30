@@ -10,12 +10,16 @@ import "./PhotoStack.css";
 const MotionPolaroidPhoto = motion.create(PolaroidPhoto);
 
 const DELAY_DIFFERENCE = 0.02;
+const MOBILE_DELAY_DIFFERENCE = 0.005;
+function getDelayDifference() {
+  return isMobile() ? MOBILE_DELAY_DIFFERENCE : DELAY_DIFFERENCE;
+}
 function getPhotoDelay(photoIndex) {
-  return photoIndex * DELAY_DIFFERENCE;
+  return photoIndex * getDelayDifference();
 }
 
 function getReversedPhotoDelay(photoIndex, itemsLength) {
-  return (itemsLength - photoIndex) * DELAY_DIFFERENCE;
+  return (itemsLength - photoIndex) * getDelayDifference();
 }
 
 function getRotationMultiplier(i) {
@@ -24,14 +28,20 @@ function getRotationMultiplier(i) {
 
 const PHOTO_STACK_ANIMATION_DURATION = 0.6;
 
+function isMobile() {
+  return window.innerWidth < 767;
+}
+
+let currentTopTimer = null;
+
 export default function PhotoStack({ photos, stackId, stackName, index }) {
-  let currentTopTimer = null;
   const [showPreview, setShowPreview] = useState(false);
   const [currentTop, setCurrentTop] = useState(false);
 
   useLockBodyScroll(showPreview);
 
   function togglePreview() {
+    console.log(currentTopTimer);
     // don't open if stack is currently animating to closed
     if (currentTopTimer) return;
 
@@ -44,7 +54,7 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
           setCurrentTop(false);
           clearTimeout(currentTopTimer);
           currentTopTimer = null;
-        }, PHOTO_STACK_ANIMATION_DURATION * 1000);
+        }, PHOTO_STACK_ANIMATION_DURATION * 1000 + getDelayDifference() * photos.length);
       }
       return !previousValue;
     });
@@ -82,7 +92,9 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                   photoText={photo.text}
                   index={i}
                   photoData={photo}
-                  initial={{ rotate: getRotationMultiplier(i) * -45 }}
+                  initial={{
+                    rotate: getRotationMultiplier(i) * (isMobile() ? -10 : -45),
+                  }}
                   animate={{ rotate: 0 }}
                   layoutId={`${photo.text}-${stackId}-${i}`}
                   key={`${photo.text}-${stackId}-${i}-stack`}
@@ -122,7 +134,8 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                       index={i}
                       photoData={photo}
                       initial={{
-                        rotate: getRotationMultiplier(i) * 30,
+                        rotate:
+                          getRotationMultiplier(i) * (isMobile() ? 10 : 30),
                       }}
                       animate={{
                         rotate: 0,

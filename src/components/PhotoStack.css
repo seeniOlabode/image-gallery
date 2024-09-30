@@ -90,6 +90,7 @@
   gap: 50px;
   min-height: 100vh;
   padding: 50px 30px;
+  padding-bottom: 70px;
   overflow: scroll;
   z-index: 200;
 }

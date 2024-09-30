@@ -25,7 +25,7 @@ function getRotationMultiplier(i) {
 const PHOTO_STACK_ANIMATION_DURATION = 0.6;
 let currentTopTimer = null;
 
-export default function PhotoStack({ photos, stackId, stackName }) {
+export default function PhotoStack({ photos, stackId, stackName, index }) {
   const [showPreview, setShowPreview] = useState(false);
   const [currentTop, setCurrentTop] = useState(false);
 
@@ -65,6 +65,7 @@ export default function PhotoStack({ photos, stackId, stackName }) {
         style={{
           zIndex: currentTop ? 100 : null,
           "--stack-animation-duration": `${PHOTO_STACK_ANIMATION_DURATION}s`,
+          "--stack-delay": `${index * 0.1}s`,
         }}
       >
         <AnimatePresence initial={false}>

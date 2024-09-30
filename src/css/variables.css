@@ -1,9 +1,9 @@
 :root {
   --tape: hsla(54, 29%, 80% 1);
   --tape-edge: hsla(53, 15%, 67%, 1);
-  --background: hsla(203, 31%, 70%, 1);
-  --foreground: hsla(203, 31%, 10%, 0.7);
+  --background: hsl(210, 5%, 8%);
+  --foreground: hsla(210, 90%, 100%, 1);
   --shadow-size: 1px;
-  --photo-shadow: hsla(0, 0%, 55%, 0.259);
+  --photo-shadow: hsl(0, 0%, 0%);
   --photo-border: hsla(0, 0%, 55%, 0.1);
 }

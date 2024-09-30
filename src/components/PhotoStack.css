@@ -4,6 +4,9 @@
   justify-content: center;
   width: fit-content;
   cursor: zoom-in;
+  opacity: 0;
+  animation: fade-in 0.5s ease forwards;
+  animation-delay: var(--stack-delay);
 }
 
 .photo-stack > .polaroid-photo {
@@ -38,12 +41,13 @@
 .info-count {
   font-size: 12px;
   color: var(--foreground);
-  opacity: 0.3;
+  opacity: 0.6;
 }
 
 .photo-stack-info.hide {
   opacity: 0;
   transition-delay: 0s;
+  transition: none;
 }
 
 .photo-stack-preview-wrapper {
@@ -64,7 +68,7 @@
   place-items: center;
   gap: 50px;
   min-height: 100vh;
-  padding: 50px;
+  padding: 50px 30px;
   overflow: scroll;
   z-index: 200;
 }
@@ -113,10 +117,9 @@
   width: fit-content;
   padding: 5px 8px;
   border-radius: 99px;
-  color: var(--foreground);
+  color: var(--background);
   font-size: 12px;
   font-family: "Giest", sans-serif;
-  border: solid 1px var(--photo-shadow);
   white-space: nowrap;
   position: relative;
   top: 10px;
@@ -146,7 +149,7 @@
 }
 
 .zoom-container .polaroid-photo .photo-bottom .photo-text {
-  transform: rotate(-7deg) translateY(-30px);
+  transform: rotate(-7deg) translateY(-15%);
 }
 
 @media screen and (min-width: 764px) {
@@ -169,5 +172,18 @@
   .photo-stack-preview {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 50px;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

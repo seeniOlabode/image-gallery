@@ -27,6 +27,7 @@ function App() {
             stackId={`${stack.name}-${i}`}
             stackName={`${stack.name}`}
             key={`${stack.name}-${i}`}
+            index={i}
           />
         );
       })}

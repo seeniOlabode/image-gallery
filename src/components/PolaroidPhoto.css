@@ -13,6 +13,7 @@
   user-select: none;
   /* border-radius: 10px; */
   border: solid 1px var(--photo-border);
+  will-change: transform, opacity;
 }
 
 .polaroid-photo::before {

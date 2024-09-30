@@ -94,8 +94,9 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                   photoData={photo}
                   initial={{
                     rotate: getRotationMultiplier(i) * (isMobile() ? -10 : -45),
+                    opacity: 1,
                   }}
-                  animate={{ rotate: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
                   layoutId={`${photo.text}-${stackId}-${i}`}
                   key={`${photo.text}-${stackId}-${i}-stack`}
                   transition={{
@@ -149,7 +150,8 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                         duration: PHOTO_STACK_ANIMATION_DURATION,
                       }}
                       style={{
-                        opacity: currentImage?.index === i ? 0 : 1,
+                        visibility:
+                          currentImage?.index === i ? "hidden" : "visible",
                       }}
                       onClick={(e) => zoomImage(e, photo, i)}
                     />

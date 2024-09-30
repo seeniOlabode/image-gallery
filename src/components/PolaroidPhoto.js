@@ -4,13 +4,13 @@ import "./PolaroidPhoto.css";
 function defaultClick() {}
 
 const PolaroidPhoto = forwardRef(function PolaroidPhoto(
-  { photoUrl, photoText, index, photoData, onClick = defaultClick },
+  { photoUrl, photoText, index, photoData, onClick = defaultClick, style = {} },
   ref
 ) {
   return (
     <div
       className="polaroid-photo"
-      style={{ "--index": index }}
+      style={{ "--index": index, ...style }}
       ref={ref}
       onClick={onClick}
     >

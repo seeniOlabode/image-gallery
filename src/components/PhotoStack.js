@@ -23,15 +23,18 @@ function getRotationMultiplier(i) {
 }
 
 const PHOTO_STACK_ANIMATION_DURATION = 0.6;
-let currentTopTimer = null;
 
 export default function PhotoStack({ photos, stackId, stackName, index }) {
+  let currentTopTimer = null;
   const [showPreview, setShowPreview] = useState(false);
   const [currentTop, setCurrentTop] = useState(false);
 
   useLockBodyScroll(showPreview);
 
   function togglePreview() {
+    // don't open if stack is currently animating to closed
+    if (currentTopTimer) return;
+
     setShowPreview((previousValue) => {
       clearTimeout(currentTopTimer);
       if (!previousValue) {
@@ -39,6 +42,8 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
       } else {
         currentTopTimer = setTimeout(() => {
           setCurrentTop(false);
+          clearTimeout(currentTopTimer);
+          currentTopTimer = null;
         }, PHOTO_STACK_ANIMATION_DURATION * 1000);
       }
       return !previousValue;
@@ -122,6 +127,7 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                       animate={{
                         rotate: 0,
                         opacity: currentImage?.index === i ? 0 : 1,
+                        y: currentImage?.index === i ? 10 : 0,
                       }}
                       layoutId={`${photo.text}-${stackId}-${i}`}
                       key={`${photo.text}-${stackId}-${i}-preview`}
@@ -167,9 +173,8 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
             photoUrl={currentImage.url}
             photoText={currentImage.text}
             photoData={currentImage}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.6 } }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
           />
         </div>
       )}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { useLockBodyScroll } from "@custom-react-hooks/use-lock-body-scroll";
+import useKeypress from "react-use-keypress";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -41,7 +42,6 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
   useLockBodyScroll(showPreview);
 
   function togglePreview() {
-    console.log(currentTopTimer);
     // don't open if stack is currently animating to closed
     if (currentTopTimer) return;
 
@@ -70,6 +70,16 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
       setCurrentImage(null);
     }
   }
+
+  useKeypress("Escape", (event) => {
+    if (showPreview) {
+      if (currentImage) {
+        zoomImage(event);
+      } else {
+        togglePreview();
+      }
+    }
+  });
 
   return (
     <>

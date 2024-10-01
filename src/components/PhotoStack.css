@@ -87,6 +87,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   place-items: center;
+  place-content: center;
   gap: 50px;
   min-height: 100vh;
   padding: 50px 30px;

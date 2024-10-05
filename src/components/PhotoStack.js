@@ -133,47 +133,53 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
         </div>
       </div>
 
-      {showPreview && (
-        <>
-          <div
-            className="photo-stack-preview-wrapper"
-            key={`${stackId}-preview-wrapper`}
-            onClick={togglePreview}
-          >
-            <div className="photo-stack-preview">
-              {photos.map((photo, i) => {
-                return (
-                  <MotionPolaroidPhoto
-                    photoUrl={photo.url}
-                    photoText={photo.text}
-                    index={i}
-                    photoData={photo}
-                    initial={{
-                      rotate: getRotationMultiplier(i) * (isMobile() ? 10 : 30),
-                    }}
-                    animate={{
-                      rotate: 0,
-                    }}
-                    layoutId={`${photo.text}-${stackId}-${i}`}
-                    key={`${photo.text}-${stackId}-${i}-preview`}
-                    transition={{
-                      delay: getReversedPhotoDelay(i, photos.length),
-                      type: "spring",
-                      bounce: 0,
-                      duration: PHOTO_STACK_ANIMATION_DURATION,
-                    }}
-                    style={{
-                      visibility:
-                        currentImage?.index === i ? "hidden" : "visible",
-                    }}
-                    onClick={(e) => zoomImage(e, photo, i)}
-                  />
-                );
-              })}
+      <AnimatePresence>
+        {showPreview && (
+          <>
+            <div
+              className="photo-stack-preview-wrapper"
+              key={`${stackId}-preview-wrapper`}
+              onClick={togglePreview}
+            >
+              <div className="photo-stack-preview">
+                {photos.map((photo, i) => {
+                  return (
+                    <MotionPolaroidPhoto
+                      photoUrl={photo.url}
+                      photoText={photo.text}
+                      index={i}
+                      photoData={photo}
+                      initial={{
+                        rotate:
+                          getRotationMultiplier(i) * (isMobile() ? 10 : 40),
+                      }}
+                      animate={{
+                        rotate: 0,
+                      }}
+                      layoutId={`${photo.text}-${stackId}-${i}`}
+                      key={`${photo.text}-${stackId}-${i}-preview`}
+                      transition={{
+                        delay: getReversedPhotoDelay(i, photos.length),
+                        type: "spring",
+                        bounce: 0,
+                        duration: PHOTO_STACK_ANIMATION_DURATION,
+                        rotate: {
+                          duration: PHOTO_STACK_ANIMATION_DURATION * 0.7,
+                        },
+                      }}
+                      style={{
+                        visibility:
+                          currentImage?.index === i ? "hidden" : "visible",
+                      }}
+                      onClick={(e) => zoomImage(e, photo, i)}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {showPreview && (

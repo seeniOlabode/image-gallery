@@ -164,7 +164,8 @@ export default function PhotoStack({ photos, stackId, stackName, index }) {
                         bounce: 0,
                         duration: PHOTO_STACK_ANIMATION_DURATION,
                         rotate: {
-                          duration: PHOTO_STACK_ANIMATION_DURATION * 0.7,
+                          duration: PHOTO_STACK_ANIMATION_DURATION * 0.9,
+                          type: "spring",
                         },
                       }}
                       style={{
